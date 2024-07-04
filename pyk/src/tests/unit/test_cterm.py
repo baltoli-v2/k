@@ -76,17 +76,17 @@ def test_no_cterm_match(term: KInner, pattern: KInner) -> None:
 
 def test_cterm_match_with_constraint() -> None:
     # Given
-    merged_cterm = _as_cterm(KVariable('X'))
+    cpattern = _as_cterm(KVariable('X'))
     original_cterm = _as_cterm(KVariable('X'))
     x_ge_0 = mlEqualsTrue(geInt(KVariable('X'), intToken(0)))
     original_cterm = original_cterm.add_constraint(x_ge_0)
 
     # When
-    csubst = merged_cterm.match_with_constraint(original_cterm)
+    csubst = cpattern.match_with_constraint(original_cterm)
 
     # Then
     assert csubst is not None
-    assert csubst.apply(merged_cterm) == original_cterm
+    assert csubst.apply(cpattern) == original_cterm
 
 
 BUILD_RULE_TEST_DATA: Final = (

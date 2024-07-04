@@ -34,8 +34,12 @@ ques_unds_v2 = KVariable('?_V2')
 v1_sorted = KVariable('V1', sort=INT)
 
 
+def generated_top(term: KInner) -> KApply:
+    return KApply(KLabel('<generatedTop>', GENERATED_TOP_CELL), term)
+
+
 def _as_cterm(term: KInner) -> CTerm:
-    return CTerm(KApply(KLabel('<generatedTop>', GENERATED_TOP_CELL), term))
+    return CTerm(generated_top(term))
 
 
 MATCH_TEST_DATA: Final[tuple[tuple[KInner, KInner], ...]] = (

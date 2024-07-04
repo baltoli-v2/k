@@ -80,9 +80,9 @@ def test_no_cterm_match(term: KInner, pattern: KInner) -> None:
 
 def test_cterm_match_with_constraint() -> None:
     # Given
-    cpattern = _as_cterm(KVariable('X'))
-    cterm = _as_cterm(KVariable('X'))
-    x_ge_0 = mlEqualsTrue(geInt(KVariable('X'), intToken(0)))
+    cpattern = _as_cterm(x)
+    cterm = _as_cterm(x)
+    x_ge_0 = mlEqualsTrue(geInt(x, intToken(0)))
     cterm = cterm.add_constraint(x_ge_0)
 
     # When

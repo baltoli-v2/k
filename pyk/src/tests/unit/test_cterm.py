@@ -10,7 +10,7 @@ from pyk.kast import Atts, KAtt
 from pyk.kast.inner import KApply, KLabel, KRewrite, KSequence, KSort, KVariable
 from pyk.kast.outer import KClaim
 from pyk.prelude.k import GENERATED_TOP_CELL
-from pyk.prelude.kint import INT, intToken, geInt
+from pyk.prelude.kint import INT, geInt, intToken
 from pyk.prelude.ml import mlAnd, mlEqualsTrue
 
 from .utils import a, b, c, f, g, h, k, x, y, z
@@ -63,7 +63,9 @@ def test_cterm_match_with_constraint() -> None:
     csubst = merged_cterm.match_with_constraint(original_cterm)
 
     # Then
+    assert csubst is not None
     assert csubst.apply(merged_cterm) == original_cterm
+
 
 @pytest.mark.parametrize('term,pattern', MATCH_TEST_DATA, ids=count())
 def test_cterm_match_and_subst(term: KInner, pattern: KInner) -> None:

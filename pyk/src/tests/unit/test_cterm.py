@@ -81,8 +81,7 @@ def test_no_cterm_match(term: KInner, pattern: KInner) -> None:
 def test_cterm_match_with_constraint() -> None:
     # Given
     cpattern = CTerm(generated_top(x))
-    cterm = CTerm(generated_top(x))
-    cterm = cterm.add_constraint(mlEqualsTrue(geInt(x, intToken(0))))
+    cterm = CTerm(generated_top(x), (mlEqualsTrue(geInt(x, intToken(0))),))
 
     # When
     csubst = cpattern.match_with_constraint(cterm)

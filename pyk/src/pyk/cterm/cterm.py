@@ -175,7 +175,7 @@ class CTerm:
         antecedent = mlAnd(unique(antecedents), GENERATED_TOP_CELL)
         consequent = mlAnd(unique(term for term in consequents if term not in set(antecedents)), GENERATED_TOP_CELL)
 
-        if mlTop(GENERATED_TOP_CELL) in {antecedent, consequent}:
+        if mlTop(GENERATED_TOP_CELL) in [antecedent, consequent]:
             return consequent
 
         return mlImplies(antecedent, consequent, GENERATED_TOP_CELL)

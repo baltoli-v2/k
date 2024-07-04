@@ -82,8 +82,7 @@ def test_cterm_match_with_constraint() -> None:
     # Given
     cpattern = CTerm(generated_top(x))
     cterm = CTerm(generated_top(x))
-    x_ge_0 = mlEqualsTrue(geInt(x, intToken(0)))
-    cterm = cterm.add_constraint(x_ge_0)
+    cterm = cterm.add_constraint(mlEqualsTrue(geInt(x, intToken(0))))
 
     # When
     csubst = cpattern.match_with_constraint(cterm)
